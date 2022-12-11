@@ -155,11 +155,14 @@ function Coin() {
       setPriceInfo(priceData);
       setLoading(false);
     })();
-  }, []);
+  }, [coinId]);
+
   return (
     <Container>
       <Header>
-        <Title>{state?.name || "Loading.."}</Title>
+        <Title>
+          {state?.name ? state.name : loading ? "Loading.." : info?.name}
+        </Title>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
