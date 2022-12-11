@@ -10,7 +10,6 @@ function Header() {
     <header>
       <ul />
       <li>
-        {" "}
         <Link to={"/"}>Home</Link>
       </li>
       <li>
