@@ -15,6 +15,7 @@ function Header() {
       <li>
         <button onClick={onCoinsClick}> Coins</button>
       </li>
+      <hr />
     </header>
   );
 }
