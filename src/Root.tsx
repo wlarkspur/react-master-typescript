@@ -2,6 +2,7 @@ import { Outlet, Router } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Header from "./components/Header";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { HelmetProvider } from "react-helmet-async";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap'); 
@@ -71,7 +72,9 @@ function Root() {
     <>
       <Header />
       <GlobalStyle />
-      <Outlet />
+      <HelmetProvider>
+        <Outlet />
+      </HelmetProvider>
       <ReactQueryDevtools initialIsOpen={true} />
     </>
   );
