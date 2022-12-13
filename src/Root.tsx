@@ -1,4 +1,4 @@
-import { Outlet, Router } from "react-router-dom";
+import { Navigate, Outlet, Router } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 import Header from "./components/Header";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";

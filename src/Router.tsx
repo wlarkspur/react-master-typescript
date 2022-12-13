@@ -4,6 +4,7 @@ import Chart from "./routes/Chart";
 import Coin from "./routes/Coin";
 
 import Coins from "./routes/Coins";
+
 import Price from "./routes/Price";
 
 import NotFound from "./screens/NotFound";
