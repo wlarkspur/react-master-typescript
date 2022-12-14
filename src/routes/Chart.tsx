@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useOutletContext } from "react-router-dom";
 import { fetchCoinHistory } from "../api";
 import ApexCharts from "react-apexcharts";
+import { type } from "os";
 
 interface IHistorical {
   time_open: number;
@@ -29,6 +30,47 @@ function Chart() {
   );
 
   return (
+    <h1>
+      {isLoading ? (
+        "Loading chart..."
+      ) : (
+        <ApexCharts
+          type="candlestick"
+          series={
+            [
+              {
+                data: data?.map((price) => {
+                  return {
+                    x: price.time_close,
+                    y: [price.open, price.high, price.low, price.close],
+                  };
+                }),
+              },
+            ] as any
+          }
+          options={{
+            chart: {
+              type: "candlestick",
+              height: 350,
+            },
+            title: {
+              text: "CandleStick chart",
+              align: "left",
+            },
+            xaxis: {
+              type: "datetime",
+            },
+            yaxis: {
+              tooltip: {
+                enabled: true,
+              },
+            },
+          }}
+        />
+      )}
+    </h1>
+  );
+  /*   return (
     <h1>
       {isLoading ? (
         "Loading chart..."
@@ -96,7 +138,7 @@ function Chart() {
         />
       )}
     </h1>
-  );
+  ); */
 }
 
 export default Chart;
