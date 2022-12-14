@@ -41,7 +41,7 @@ function Chart() {
               {
                 data: data?.map((price) => {
                   return {
-                    x: price.time_close,
+                    x: new Date(price.time_close * 1000).toISOString(),
                     y: [price.open, price.high, price.low, price.close],
                   };
                 }),
@@ -52,6 +52,7 @@ function Chart() {
             chart: {
               type: "candlestick",
               height: 350,
+              foreColor: `white`,
             },
             title: {
               text: "CandleStick chart",
