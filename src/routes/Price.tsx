@@ -102,7 +102,7 @@ function Price() {
       refetchInterval: 3000,
     }
   );
-
+  const value = tickersData?.quotes.USD.volume_24h;
   return (
     <Container>
       <PriceContainer>
@@ -120,9 +120,7 @@ function Price() {
           <span>Volume 24h </span>
         </CryptoPrice>
         <CryptoPrice>
-          <span>
-            $ {tickersData?.quotes.USD.volume_24h.toLocaleString("en-US")}
-          </span>
+          <span>$ {Math.floor(value ?? 0).toLocaleString("en-US")}</span>
         </CryptoPrice>
       </PriceContainer>
     </Container>
