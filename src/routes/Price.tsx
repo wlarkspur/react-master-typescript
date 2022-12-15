@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import { useOutletContext } from "react-router-dom";
 import { fetchCoinHistory, fetchCoins, fetchCoinTickers } from "../api";
+import { spawn } from "child_process";
 
 interface IChart {
   coinId: string;
@@ -73,27 +74,26 @@ const PriceContainer = styled.div`
   padding: 10px 10px;
   border-radius: 10px;
   margin: 5px 0px;
+  text-align: center;
 `;
 
 const CryptoPrice = styled.div`
+  display: flex;
   color: yellowgreen;
+  justify-content: center;
+  align-items: center;
+  
 `;
 
 const Img = styled.img`
   width: 35px;
   height: 35px;
-  margin-right: 10px;
+  
 `;
 
 function Price() {
   const { coinId } = useOutletContext<IChart>();
-  const { isLoading, data } = useQuery<IHistorical[]>(
-    ["Buy", coinId],
-    () => fetchCoinHistory(coinId),
-    {
-      refetchInterval: 10000,
-    }
-  );
+ 
 
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
     ["tickers", coinId],
@@ -105,6 +105,17 @@ function Price() {
   const value = tickersData?.quotes.USD.volume_24h;
   return (
     <Container>
+      {tickersLoading ? <span>Loading...</span> : <><PriceContainer>
+        <Img src={`https://coinicons-api.vercel.app/api/icon/${tickersData?.symbol.toLowerCase()}`} />
+        <CryptoPrice>
+          <span>
+            $ {tickersData?.quotes.USD.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </span>
+        </CryptoPrice>
+        <CryptoPrice>
+        <Img src={`https://coinicons-api.vercel.app/api/icon/usd`} />
+        </CryptoPrice>
+      </PriceContainer>
       <PriceContainer>
         <CryptoPrice>
           <span>Market Cap </span>
@@ -122,7 +133,9 @@ function Price() {
         <CryptoPrice>
           <span>$ {Math.floor(value ?? 0).toLocaleString("en-US")}</span>
         </CryptoPrice>
-      </PriceContainer>
+      </PriceContainer></>}
+      
+      
     </Container>
   );
 }
