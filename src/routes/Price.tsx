@@ -75,6 +75,7 @@ const PriceContainer = styled.div`
   border-radius: 10px;
   margin: 5px 0px;
   text-align: center;
+  border: 1px solid white;
 `;
 
 const CryptoPrice = styled.div`
@@ -82,18 +83,15 @@ const CryptoPrice = styled.div`
   color: yellowgreen;
   justify-content: center;
   align-items: center;
-  
 `;
 
 const Img = styled.img`
   width: 35px;
   height: 35px;
-  
 `;
 
 function Price() {
   const { coinId } = useOutletContext<IChart>();
- 
 
   const { isLoading: tickersLoading, data: tickersData } = useQuery<PriceData>(
     ["tickers", coinId],
@@ -105,37 +103,46 @@ function Price() {
   const value = tickersData?.quotes.USD.volume_24h;
   return (
     <Container>
-      {tickersLoading ? <span>Loading...</span> : <><PriceContainer>
-        <Img src={`https://coinicons-api.vercel.app/api/icon/${tickersData?.symbol.toLowerCase()}`} />
-        <CryptoPrice>
-          <span>
-            $ {tickersData?.quotes.USD.price.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-          </span>
-        </CryptoPrice>
-        <CryptoPrice>
-        <Img src={`https://coinicons-api.vercel.app/api/icon/usd`} />
-        </CryptoPrice>
-      </PriceContainer>
-      <PriceContainer>
-        <CryptoPrice>
-          <span>Market Cap </span>
-        </CryptoPrice>
-        <CryptoPrice>
-          <span>
-            $ {tickersData?.quotes.USD.market_cap.toLocaleString("en-US")}
-          </span>
-        </CryptoPrice>
-      </PriceContainer>
-      <PriceContainer>
-        <CryptoPrice>
-          <span>Volume 24h </span>
-        </CryptoPrice>
-        <CryptoPrice>
-          <span>$ {Math.floor(value ?? 0).toLocaleString("en-US")}</span>
-        </CryptoPrice>
-      </PriceContainer></>}
-      
-      
+      {tickersLoading ? (
+        <span>Loading...</span>
+      ) : (
+        <>
+          <PriceContainer>
+            <Img
+              src={`https://coinicons-api.vercel.app/api/icon/${tickersData?.symbol.toLowerCase()}`}
+            />
+            <CryptoPrice>
+              <span>
+                ${" "}
+                {tickersData?.quotes.USD.price
+                  .toFixed(2)
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </span>
+            </CryptoPrice>
+            <CryptoPrice>
+              <Img src={`https://coinicons-api.vercel.app/api/icon/usd`} />
+            </CryptoPrice>
+          </PriceContainer>
+          <PriceContainer>
+            <CryptoPrice>
+              <span>Market Cap </span>
+            </CryptoPrice>
+            <CryptoPrice>
+              <span>
+                $ {tickersData?.quotes.USD.market_cap.toLocaleString("en-US")}
+              </span>
+            </CryptoPrice>
+          </PriceContainer>
+          <PriceContainer>
+            <CryptoPrice>
+              <span>Volume 24h </span>
+            </CryptoPrice>
+            <CryptoPrice>
+              <span>$ {Math.floor(value ?? 0).toLocaleString("en-US")}</span>
+            </CryptoPrice>
+          </PriceContainer>
+        </>
+      )}
     </Container>
   );
 }

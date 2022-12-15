@@ -14,21 +14,20 @@ const Conatainer = styled.div`
 `;
 
 const MainBtn = styled.a`
-  background-color: black;
+  background-color: ${(props) => props.theme.accentColor};
   font-weight: bold;
   display: flex;
   justify-content: center;
   padding: 5px 10px;
   border-radius: 15px;
-  
 `;
 
 function Header() {
   return (
     <Conatainer>
-    <MainBtn>
-      <Link to={"/coins"}>Home</Link>
-    </MainBtn>
+      <MainBtn>
+        <Link to={"/coins"}>Home</Link>
+      </MainBtn>
     </Conatainer>
   );
 }

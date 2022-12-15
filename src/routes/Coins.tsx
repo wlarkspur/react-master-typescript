@@ -2,13 +2,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 
 const Container = styled.div`
   padding: 0px 20px;
-  max-width: 350px;
+  max-width: 450px;
   margin: 0 auto;
 `;
 
@@ -25,10 +25,11 @@ const CoinList = styled.ul`
 `;
 
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
+  border: 1px solid white;
   a {
     padding: 10px;
     transition: color 0.2s ease-in;
@@ -68,9 +69,14 @@ interface ICoin {
   type: string;
 }
 
+interface ICoinProps {
+  toggleDark: () => void;
+  isDark: boolean;
+}
+
 function Coins() {
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
-
+  const { toggleDark } = useOutletContext<ICoinProps>();
   /*   const [coins, setCoins] = useState<CoinInterface[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -88,6 +94,7 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coin</Title>
+        <button onClick={toggleDark}>Toggle Dark Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>

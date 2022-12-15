@@ -1,8 +1,10 @@
 import { Navigate, Outlet, Router } from "react-router-dom";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { HelmetProvider } from "react-helmet-async";
+import { useState } from "react";
+import { darkTheme, lightTheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap'); 
@@ -66,18 +68,28 @@ a{
   color: inherit;
 }
 `;
+const BackLayer = styled.div`
+  background-color: ${(props) => props.theme.bgColor};
+  height: 100vh;
+  width: 100vw;
+`;
 
 function Root() {
+  const [isDark, setIsDark] = useState(false);
+  const toggleDark = () => setIsDark((current) => !current);
   return (
-    <>
-      <Header />
-      <GlobalStyle />
-      <HelmetProvider>
-        <Outlet />
-      </HelmetProvider>
-      <ReactQueryDevtools initialIsOpen={true} />
-    </>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <BackLayer>
+        <Header />
+        <GlobalStyle />
+        <HelmetProvider>
+          <Outlet context={{ toggleDark, isDark, setIsDark }} />
+        </HelmetProvider>
+        <ReactQueryDevtools initialIsOpen={true} />
+      </BackLayer>
+    </ThemeProvider>
   );
 }
 
 export default Root;
+//toDO 버튼 영역 확장시키기
