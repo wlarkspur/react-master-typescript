@@ -59,6 +59,12 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
+const ToggleBtn = styled.button`
+  display: block;
+  margin-left: 5px;
+  z-index:1;
+`;
+
 interface ICoin {
   id: string;
   name: string;
@@ -94,7 +100,7 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coin</Title>
-        <button onClick={toggleDark}>Toggle Dark Mode</button>
+        <ToggleBtn onClick={toggleDark}>Toggle Dark Mode</ToggleBtn>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
