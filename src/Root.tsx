@@ -5,6 +5,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { HelmetProvider } from "react-helmet-async";
 import { useState } from "react";
 import { darkTheme, lightTheme } from "./theme";
+import { isDarkAtom } from "./atoms";
+import { useRecoilValue } from "recoil";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap'); 
@@ -75,15 +77,14 @@ const BackLayer = styled.div`
 `;
 
 function Root() {
-  const [isDark, setIsDark] = useState(false);
-  const toggleDark = () => setIsDark((current) => !current);
+  const isDark = useRecoilValue(isDarkAtom);
   return (
     <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
       <BackLayer>
         <Header />
         <GlobalStyle />
         <HelmetProvider>
-          <Outlet context={{ toggleDark, isDark, setIsDark }} />
+          <Outlet />
         </HelmetProvider>
         <ReactQueryDevtools initialIsOpen={true} />
       </BackLayer>
