@@ -7,6 +7,10 @@ import styled from "styled-components";
 import { fetchCoins } from "../api";
 import { isDarkAtom } from "../atoms";
 import { useSetRecoilState } from "recoil";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleHalfStroke } from "@fortawesome/free-solid-svg-icons";
+
+const btn = <FontAwesomeIcon icon={faCircleHalfStroke} />;
 
 const Container = styled.div`
   padding: 0px 20px;
@@ -61,10 +65,10 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
-const ToggleBtn = styled.button`
-  display: block;
-  margin-left: 5px;
-  z-index: 1;
+const Icoin = styled.i`
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 25px;
 `;
 
 interface ICoin {
@@ -77,8 +81,6 @@ interface ICoin {
   type: string;
 }
 
-interface ICoinProps {}
-
 function Coins() {
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
   const setDarkAtom = useSetRecoilState(isDarkAtom);
@@ -90,7 +92,7 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>Coin</Title>
-        <button onClick={toggelDarkAtom}>Toggle Module</button>
+        <Icoin onClick={toggelDarkAtom}>{btn}</Icoin>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
