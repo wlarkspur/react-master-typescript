@@ -6,12 +6,11 @@ const Conatainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  
-  right: 760px;
+
+  right: 280px;
   top: 20px;
   box-sizing: border-box;
   position: fixed;
-  
 `;
 
 const MainBtn = styled.a`
@@ -21,7 +20,7 @@ const MainBtn = styled.a`
   justify-content: center;
   padding: 5px 10px;
   border-radius: 15px;
-  z-index:0;
+  z-index: 0;
 `;
 
 function Header() {

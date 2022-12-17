@@ -33,8 +33,8 @@ const Loader = styled.span`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: ${props => props.theme.cardBgColor};
-  color: ${props=> props.theme.accentColor}
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.accentColor};
   padding: 10px 20px;
   border-radius: 10px;
   border: 1px solid white;
@@ -54,7 +54,6 @@ const OverviewItem = styled.div`
 `;
 const Description = styled.p`
   margin: 20px 0px;
-  
 `;
 
 const Tabs = styled.div`
@@ -62,7 +61,6 @@ const Tabs = styled.div`
   grid-template-columns: repeat(2, 1fr);
   margin: 30px 0px;
   gap: 10px;
-  
 `;
 
 const Tab = styled.span<{ isActive: boolean }>`
@@ -70,7 +68,7 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 15px;
   font-weight: 400;
-  background-color: ${props => props.theme.cardBgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
   padding: 10px 0px;
   border-radius: 10px;
   border: 1px solid white;
@@ -78,7 +76,6 @@ const Tab = styled.span<{ isActive: boolean }>`
     props.isActive ? props.theme.accentColor : props.theme.textColor};
   a {
     display: block;
-  
   }
 `;
 
