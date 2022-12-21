@@ -6,9 +6,6 @@ const Conatainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-
-  right: 280px;
-  top: 20px;
   box-sizing: border-box;
   position: fixed;
 `;
