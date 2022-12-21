@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/wlarkspur/react-master-typescript/static/js/main.78dc4769.js",
-    "index.html": "/wlarkspur/react-master-typescript/index.html",
-    "main.78dc4769.js.map": "/wlarkspur/react-master-typescript/static/js/main.78dc4769.js.map"
+    "main.js": "/static/js/main.b2cb15de.js",
+    "index.html": "/index.html",
+    "main.b2cb15de.js.map": "/static/js/main.b2cb15de.js.map"
   },
   "entrypoints": [
-    "static/js/main.78dc4769.js"
+    "static/js/main.b2cb15de.js"
   ]
 }
