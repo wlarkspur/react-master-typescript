@@ -64,5 +64,5 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26"
   },
-  "homepage": "https://wlarkspur.github.io/react-masterclass-wlarkspur/"
+  "homepage": "https://github.com/wlarkspur/react-master-typescript"
 }
