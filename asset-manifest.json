@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-masterclass-wlarkspur/static/js/main.57bf0a6f.js",
-    "index.html": "/react-masterclass-wlarkspur/index.html",
-    "main.57bf0a6f.js.map": "/react-masterclass-wlarkspur/static/js/main.57bf0a6f.js.map"
+    "main.js": "/wlarkspur/react-master-typescript/static/js/main.78dc4769.js",
+    "index.html": "/wlarkspur/react-master-typescript/index.html",
+    "main.78dc4769.js.map": "/wlarkspur/react-master-typescript/static/js/main.78dc4769.js.map"
   },
   "entrypoints": [
-    "static/js/main.57bf0a6f.js"
+    "static/js/main.78dc4769.js"
   ]
 }
