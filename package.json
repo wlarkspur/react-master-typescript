@@ -64,6 +64,5 @@
     "@types/styled-components": "^5.1.26",
     "gh-pages": "^4.0.0"
   },
-  "homepage": "https://wlarkspur.github.io/react-masterclass-wlarkspur"
-  
+  "homepage": "https://wlarkspur.github.io/react-masterclass-wlarkspur/src/index.tsx"
 }
