@@ -65,5 +65,5 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26"
   },
-  "homepage": "https://wlarkspur.github.io/cointracker"
+  "homepage": "https://wlarkspur.github.io/react-master-typescript"
 }
